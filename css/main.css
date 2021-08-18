@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+}
+
+.head-conteiner {
+  border:1px black solid;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-conteiner1 {
+  border: 1px black solid;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-conteiner2 {
+  display: flex;
+  border: 1px black solid;
+  height: 70vh;
+}
+
+.info-conteiner {
+  border: 1px black solid;
+  height: 100%;
+  width: 40%;
+
+}
+
+.weather-conteiner {
+  border: 1px black solid;
+  height: 50%;
+  width: 100%;
+}
+
+.locations-conteiner {
+  border: 1px black solid;
+  height: 50%;
+  width: 100%;
+}
+
+.map-conteiner {
+  border: 1px black solid;
+  height: 100%;
+  width: 60%;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+

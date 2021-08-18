@@ -1,5 +1,8 @@
+
+
 export const locService = {
-    getLocs
+    getLocs,
+    saveLoc
 }
 
 
@@ -14,6 +17,11 @@ function getLocs() {
             resolve(locs);
         }, 2000)
     });
+}
+
+function saveLoc(loc){
+    locs.push(loc)
+    
 }
 
 

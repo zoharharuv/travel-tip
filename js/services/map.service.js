@@ -3,12 +3,16 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    centerMap,
+    getCurrrentLoc
 }
 
+var gCurrentLoc = {}
 var gMap;
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
+    gCurrentLoc = {lat,lng}
     console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
@@ -34,13 +38,19 @@ function addMarker(loc) {
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng);
     gMap.panTo(laLatLng);
+
+    gCurrentLoc = {
+        lat,
+        lng
+    }
+
 }
 
 
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    const API_KEY = ''; //TODO: Enter your API Key
+    const API_KEY = 'AIzaSyCj3cvoblOrjRpfT79yDM_NXhGy9hKTUzs'
     var elGoogleApi = document.createElement('script');
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
     elGoogleApi.async = true;
@@ -51,3 +61,32 @@ function _connectGoogleApi() {
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
 }
+
+//these functions get the user position from the navigator and centers the map on it
+
+function centerMap() {
+    getLocation()
+  }
+
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+  
+  function showPosition(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    gMap.setCenter(new google.maps.LatLng(lat, lng));
+    
+    gCurrentLoc = {
+        lat,
+        lng
+    }
+  }
+
+  function getCurrrentLoc(){
+      return gCurrentLoc
+  }

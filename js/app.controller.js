@@ -1,9 +1,15 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
+import { geoService } from './services/geo.service.js'
+import { storageService } from './services/storage.service'
+
 
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
+window.onGo = onGo;
+window.onSave = onSave
+window.onMyLocation = onMyLocation
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 
@@ -50,4 +56,37 @@ function onGetUserPos() {
 function onPanTo() {
     console.log('Panning the Map');
     mapService.panTo(35.6895, 139.6917);
+}
+
+function onMyLocation() {
+    mapService.centerMap()
+}
+
+// on go click get the location from the geo service as promise and then when resolved point the map to that point
+function onGo() {
+    var location = document.querySelector('[name="location"]').value
+
+    geoService.getLocation(location)
+        .then((data) => {
+            var loc = data.data.results[0].geometry.location
+            mapService.panTo(loc.lat, loc.lng)
+        })
+}
+
+function onSave() {
+    var name = document.querySelector('[name="loc-name"]').value
+    var currLoc = mapService.getCurrrentLoc()
+
+    if (!name) return
+
+    var savedLoc = {
+        name,
+        lat: currLoc.lat,
+        lng: currLoc.lng
+
+    }
+
+    locService.saveLoc(savedLoc)
+
+
 }
