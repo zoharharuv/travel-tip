@@ -3,6 +3,8 @@ import { mapService } from './services/map.service.js'
 import { geoService } from './services/geo.service.js'
 
 
+
+
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
@@ -97,12 +99,12 @@ function onSave() {
 }
 
 function renderLocs(){
-
-    var elLocsConteiner = document.querySelector('.locations-conteiner')
-    var locsHtmls = locService.getLocs().map(
+    const locs = locService.getLocs()
+    var elLocsConteiner = document.querySelector('.locations-container')
+    var locsHtmls = locs.map(
 
         function(loc){
-            return  `<div  class="location-conteiner">
+            return  `<div class="location-container">
             <button data-name="${loc.name}" onclick="onDeleteLoc(this.dataset.name)">🗑️</button>
             <small>
                Name: ${loc.name} Lat: ${loc.lat} Long: ${loc.lng} 
@@ -118,7 +120,8 @@ function renderLocs(){
 }
 
 function onDeleteLoc(name){
-    console.log(name)
+    locService.deleteLoc(name)
+    renderLocs()
 }
 
 function onPenToLocation(lat,lng){

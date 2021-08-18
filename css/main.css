@@ -41,35 +41,26 @@ body {
   width: 100%;
 }
 
-<<<<<<< HEAD
-.locations-conteiner {
-  overflow: scroll;
+.locations-container {
   display: flex;
   flex-direction: column;
-=======
-.locations-container {
->>>>>>> 787313e62af752c72165c2cfe4ae7ca320f1a0e8
   border: 1px black solid;
   height: 50%;
   width: 100%;
 }
 
-<<<<<<< HEAD
-.location-conteiner{
+.location-container {
   display: flex;
+  align-items: center;
   border: 1px black solid;
-  height:25%;
+  height: 25%;
   width: 100%;
 }
 
-.location-conteiner h3 {
-  margin-inline-start: 3rem;
-}
 
-.map-conteiner {
-=======
+
+
 .map-container {
->>>>>>> 787313e62af752c72165c2cfe4ae7ca320f1a0e8
   border: 1px black solid;
   height: 100%;
   width: 60%;
