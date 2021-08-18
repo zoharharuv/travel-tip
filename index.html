@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guy&Zohar</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-    
+
     <header>
 
-        <div class="head-conteiner">
+        <div class="head-container">
 
             <h1>TravelTip</h1>
 
-            <div class="user-actions-conteiner">
+            <div class="user-actions-container">
 
                 <input name="location" placeholder="Enter Location" type="text">
                 <button onclick="onGo()">GO</button>
@@ -28,11 +30,11 @@
 
     <main>
 
-        <div class="main-conteiner1">
+        <div class="main-container1">
 
             <h2>Location:</h2>
 
-            <div class="user-actions-conteiner">
+            <div class="user-actions-container">
 
                 <button>Copy Location</button>
                 <button onclick="onSave()">Save Location</button>
@@ -44,23 +46,16 @@
 
         </div>
 
-        <div class="main-conteiner2">
+        <div class="main-container2">
 
-            <div class="info-conteiner">
+            <div class="info-container">
 
-                <div class="weather-conteiner"></div>
-                <div class="locations-conteiner">
-
-                   
-                    
-                    
-                    
-
-                </div>
+                <div class="weather-container"></div>
+                <div class="locations-container"></div>
 
             </div>
 
-            <div class="map-conteiner">
+            <div class="map-container">
 
                 <div id="map"></div>
 
@@ -69,9 +64,10 @@
         </div>
 
     </main>
-   
-    
-    <script src="./js/lib/axios.js"></script>
+
+
+    <script src="js/lib/axios.js"></script>
     <script type="module" src="js/app.controller.js"></script>
 </body>
+
 </html>

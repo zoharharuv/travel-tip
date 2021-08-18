@@ -11,10 +11,11 @@ window.onSave = onSave
 window.onMyLocation = onMyLocation
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
-window.onDeleteLoc = onDeleteLoc
-window.onPenToLocation = onPenToLocation
+window.onDeleteLoc = onDeleteLoc;
+window.onPenToLocation = onPenToLocation;
 
 function onInit() {
+    debugger
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
@@ -66,7 +67,7 @@ function onMyLocation() {
 
 // on go click get the location from the geo service as promise and then when resolved point the map to that point
 function onGo() {
-    var location = document.querySelector('[name="location"]').value
+    var location = document.querySelector('[name="location"]').value;
 
     if (!location) return
 
@@ -78,8 +79,7 @@ function onGo() {
 }
 
 function onSave() {
-    var name = document.querySelector('[name="loc-name"]').value
-
+    var name = document.querySelector('[name="loc-name"]').value.toLowerCase();
     var currLoc = mapService.getCurrrentLoc()
 
     if (!name) return
