@@ -5,7 +5,7 @@ import { weatherService } from './services/weather.service.js'
 
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
-window.onPanTo = onPanTo;
+
 window.onGo = onGo;
 window.onSave = onSave;
 window.onCopy = onCopy;
@@ -63,13 +63,12 @@ function onGetUserPos() {
             console.log('err!!!', err);
         })
 }
-function onPanTo() {
-    console.log('Panning the Map');
-    mapService.panTo(35.6895, 139.6917);
-}
 
 function onMyLocation() {
     mapService.centerMap()
+    setTimeout(() => {
+        renderWeather()
+    }, 500);
 }
 
 // on go click get the location from the geo service as promise and then when resolved point the map to that point
@@ -82,12 +81,13 @@ function onGo() {
         .then((data) => {
             var loc = data.data.results[0].geometry.location
             mapService.panTo(loc.lat, loc.lng)
+            renderWeather()
         })
 }
 
 function onSave() {
     var name = document.querySelector('[name="location"]').value.toLowerCase();
-    var currLoc = mapService.getCurrrentLoc()
+    var currLoc = mapService.getCurrentLoc()
 
     if (!name) return
 
@@ -99,6 +99,7 @@ function onSave() {
     }
 
     locService.saveLoc(savedLoc)
+    renderLocs()
 
 
 }
@@ -130,7 +131,8 @@ function onDeleteLoc(name) {
 }
 
 function onPenToLocation(lat, lng) {
-    console.log(lat, lng)
+    mapService.panTo(lat, lng);
+    renderWeather()
 }
 
 function onCopy() {
