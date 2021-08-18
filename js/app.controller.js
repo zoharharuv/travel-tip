@@ -117,7 +117,7 @@ function renderLocs() {
              <li>Lat: ${loc.lat}</li>
              <li>Lng: ${loc.lng}</li>
             </ul>
-            <button data-lat="${loc.lat}" data-lng="${loc.lng}" onclick="onPenToLocation(+this.dataset.lat,+this.dataset.lng)">🔍</button>
+            <button data-lat="${loc.lat}" data-lng="${loc.lng}" onclick="onPenToLocation(+this.dataset.lat,+this.dataset.lng)">📍</button>
             </div>`
         }
 

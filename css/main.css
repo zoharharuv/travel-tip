@@ -13,20 +13,18 @@ input {
   font-size: 0.9em;
 }
 
-
 button {
-  background-color: rgb(225, 248, 245);
-    border-style:hidden;
-    font-size: 1.1em;
-    cursor: pointer;
-  }
+  background-color: transparent;
+  border-style: hidden;
+  font-size: 1.1em;
+  cursor: pointer;
+}
 
 .head-container {
   border: 4px white solid;
   border-bottom: unset;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   background-color: #c5e9f0;
-
   height: 20vh;
   display: flex;
   justify-content: space-between;
@@ -41,12 +39,9 @@ button {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-
-
 .main-container {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   display: flex;
- 
   height: 80vh;
 }
 
@@ -54,25 +49,22 @@ button {
   font-size: 3em;
 }
 
-.main-container button,input  {
+.main-container button, input {
   height: 5vh;
 }
 
-.main-container button,input  {
+.main-container button, input {
   height: 5vh;
 }
 
-.main-container button{
+.main-container button {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .info-container {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  
-
   height: 100%;
   width: 40%;
-
 }
 
 .weather-container {
@@ -85,7 +77,6 @@ button {
   align-items: center;
   height: 50%;
   width: 100%;
-
 }
 
 .locations-container {
@@ -104,41 +95,34 @@ button {
   background-color: #cfbe5e;
   display: flex;
   align-items: center;
-
   min-height: 25%;
-  width: 100%;
+  width: 99%;
 }
 
-
-.locations-container >*:not(:first-child) {
+.locations-container>*:not(:first-child) {
   border-top: unset;
-  }
+}
 
+.main-container .loc-btn {
+  height: 100%;
+  width: 20%;
+}
 
+.loc-list {
+  list-style-type: none;
+  width: 80%;
+}
 
-  .main-container .loc-btn {
-    height: 100%;
-    width: 20%;
-  }
-  
-  .loc-list {
-    list-style-type: none;
-    width: 80%;
-    height: 100%;
-  }
-  
-  .loc-list li {
-    font-size: 1.1em;
-  }
-  
+.loc-list li {
+  font-size: 1.1em;
+}
 
 .map-container {
-  border:4px white solid;
+  border: 4px white solid;
   background-color: #e6e2d3;
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 100%;
   width: 60%;
 }
@@ -149,5 +133,29 @@ button {
   width: 100%;
 }
 
+.credits {
+  width: 100%;
+  display: flex;
+  background-color: #693636;
+  justify-content: center;
+  align-items: center;
+}
 
- 
+.profile-card {
+  margin: 3px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-card a {
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.profile-card a:hover{
+  color: rgb(228, 218, 218);
+}
+
+.profile-card img{
+  background-color: rgb(228 219 216);
+}
