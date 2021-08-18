@@ -1,73 +1,150 @@
 * {
   box-sizing: border-box;
+  color: rgb(250, 187, 158);
+  border-radius: 5px;
 }
 
 body {
   margin: 0 auto;
+  font-style: italic;
 }
 
+input {
+  font-size: 0.9em;
+}
+
+
+button {
+  background-color: rgb(225, 248, 245);
+    border-style:hidden;
+    font-size: 1.1em;
+    cursor: pointer;
+  }
+
 .head-container {
-  border:1px black solid;
+  border: 4px white solid;
+  border-bottom: unset;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  background-color: #c5e9f0;
+
   height: 20vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.head-container h1 {
+  font-size: 3em;
+}
+
+.head-container button {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+
 
 .main-container {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   display: flex;
-  border: 1px black solid;
+ 
   height: 80vh;
 }
 
+.main-container h2 {
+  font-size: 3em;
+}
+
+.main-container button,input  {
+  height: 5vh;
+}
+
+.main-container button,input  {
+  height: 5vh;
+}
+
+.main-container button{
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 .info-container {
-  border: 1px black solid;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  
+
   height: 100%;
   width: 40%;
 
 }
 
 .weather-container {
+  border: 4px white solid;
+  border-inline-end: unset;
+  background-color: #c6e7ab;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 50%;
   width: 100%;
-  border: 1px black solid;
+
 }
 
 .locations-container {
+  background-color: #dcfaa5;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  border: 1px black solid;
+  justify-content: center;
   height: 50%;
   width: 100%;
 }
 
 .location-container {
+  border: 4px white solid;
+  margin: 1px;
+  background-color: #cfbe5e;
   display: flex;
   align-items: center;
-  border: 1px black solid;
+
   min-height: 25%;
   width: 100%;
 }
 
 
+.locations-container >*:not(:first-child) {
+  border-top: unset;
+  }
 
+
+
+  .main-container .loc-btn {
+    height: 100%;
+    width: 20%;
+  }
+  
+  .loc-list {
+    list-style-type: none;
+    width: 80%;
+    height: 100%;
+  }
+  
+  .loc-list li {
+    font-size: 1.1em;
+  }
+  
 
 .map-container {
+  border:4px white solid;
+  background-color: #e6e2d3;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px black solid;
+
   height: 100%;
   width: 60%;
 }
 
 #map {
+  border-radius: 10px;
   height: 80%;
   width: 100%;
 }

@@ -112,9 +112,11 @@ function renderLocs() {
         function (loc) {
             return `<div class="location-container">
             <button data-name="${loc.name}" onclick="onDeleteLoc(this.dataset.name)">🗑️</button>
-            <small>
-               Name: ${loc.name} Lat: ${loc.lat} Long: ${loc.lng} 
-            </small>
+            <ul class="loc-list">
+             <li>Name: ${loc.name}</li>
+             <li>Lat: ${loc.lat}</li>
+             <li>Lng: ${loc.lng}</li>
+            </ul>
             <button data-lat="${loc.lat}" data-lng="${loc.lng}" onclick="onPenToLocation(+this.dataset.lat,+this.dataset.lng)">🔍</button>
             </div>`
         }
