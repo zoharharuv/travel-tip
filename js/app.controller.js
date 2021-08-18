@@ -1,6 +1,7 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { geoService } from './services/geo.service.js'
+import { weatherService } from './services/weather.service.js'
 
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
@@ -27,6 +28,7 @@ function onInit() {
         })
         .catch(() => console.log('Error: cannot init map'));
     renderLocs()
+    renderWeather()
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -84,7 +86,7 @@ function onGo() {
 }
 
 function onSave() {
-    var name = document.querySelector('[name="loc-name"]').value.toLowerCase();
+    var name = document.querySelector('[name="location"]').value.toLowerCase();
     var currLoc = mapService.getCurrrentLoc()
 
     if (!name) return
@@ -162,4 +164,21 @@ function getQuery(val) {
         if (pair[0] === val) { return +pair[1]; }
     }
     return (false);
+}
+
+function renderWeather() {
+    const { lat, lng } = mapService.getCurrentLoc();
+    weatherService.getWeather(lat, lng)
+        .then(res => {
+            const weatherTemp = res.main.temp;
+            const weatherDesc = res.weather[0].description;
+            const icon = res.weather[0].icon + "@2x.png";
+            const iconUrl = `http://openweathermap.org/img/wn/${icon}`;
+            let elWeather = document.querySelector('.weather-container');
+            elWeather.innerHTML = `
+            <img src="${iconUrl}" alt="weather-icon"/>
+            <h3>Its currently ${weatherDesc} here</h3>
+            <h4>${weatherTemp}\xB0C.</h4>
+            `;
+        })
 }

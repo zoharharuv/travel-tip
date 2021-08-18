@@ -14,13 +14,6 @@ body {
   align-items: center;
 }
 
-.main-container1 {
-  border: 1px black solid;
-  height: 15vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .main-container2 {
   display: flex;
@@ -36,9 +29,13 @@ body {
 }
 
 .weather-container {
-  border: 1px black solid;
-  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
   width: 100%;
+  border: 1px black solid;
 }
 
 .locations-container {

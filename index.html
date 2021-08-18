@@ -17,10 +17,13 @@
             <h1>TravelTip</h1>
 
             <div class="user-actions-container">
-
+                
+                <h2>Location:</h2>
+                <button onclick="onCopy()">Copy Link</button>
                 <input name="location" placeholder="Enter Location" type="text">
                 <button onclick="onGo()">GO</button>
                 <button onclick="onMyLocation()">My Location</button>
+                <button onclick="onSave()">Save Location</button>
 
             </div>
 
@@ -29,28 +32,13 @@
     </header>
 
     <main>
-
-        <div class="main-container1">
-
-            <h2>Location:</h2>
-
-            <div class="user-actions-container">
-
-                <button onclick="onCopy()">Copy Link</button>
-                <button onclick="onSave()">Save Location</button>
-                <input name="loc-name" placeholder="location name" type="text">
-               
-
-            </div>
-
-
-        </div>
-
         <div class="main-container2">
 
             <div class="info-container">
 
-                <div class="weather-container"></div>
+                <div class="weather-container">
+
+                </div>
                 <div class="locations-container"></div>
 
             </div>
