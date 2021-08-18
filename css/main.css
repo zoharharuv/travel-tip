@@ -42,9 +42,23 @@ body {
 }
 
 .locations-conteiner {
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
   border: 1px black solid;
   height: 50%;
   width: 100%;
+}
+
+.location-conteiner{
+  display: flex;
+  border: 1px black solid;
+  height:25%;
+  width: 100%;
+}
+
+.location-conteiner h3 {
+  margin-inline-start: 3rem;
 }
 
 .map-conteiner {

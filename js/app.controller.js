@@ -1,7 +1,6 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { geoService } from './services/geo.service.js'
-import { storageService } from './services/storage.service'
 
 
 window.onload = onInit;
@@ -12,6 +11,8 @@ window.onSave = onSave
 window.onMyLocation = onMyLocation
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
+window.onDeleteLoc = onDeleteLoc
+window.onPenToLocation = onPenToLocation
 
 function onInit() {
     mapService.initMap()
@@ -19,6 +20,7 @@ function onInit() {
             console.log('Map is ready');
         })
         .catch(() => console.log('Error: cannot init map'));
+        renderLocs()
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -66,6 +68,8 @@ function onMyLocation() {
 function onGo() {
     var location = document.querySelector('[name="location"]').value
 
+    if (!location) return
+
     geoService.getLocation(location)
         .then((data) => {
             var loc = data.data.results[0].geometry.location
@@ -75,6 +79,7 @@ function onGo() {
 
 function onSave() {
     var name = document.querySelector('[name="loc-name"]').value
+
     var currLoc = mapService.getCurrrentLoc()
 
     if (!name) return
@@ -90,3 +95,33 @@ function onSave() {
 
 
 }
+
+function renderLocs(){
+
+    var elLocsConteiner = document.querySelector('.locations-conteiner')
+    var locsHtmls = locService.getLocs().map(
+
+        function(loc){
+            return  `<div  class="location-conteiner">
+            <button data-name="${loc.name}" onclick="onDeleteLoc(this.dataset.name)">🗑️</button>
+            <small>
+               Name: ${loc.name} Lat: ${loc.lat} Long: ${loc.lng} 
+            </small>
+            <button data-lat="${loc.lat}" data-lng="${loc.lng}" onclick="onPenToLocation(+this.dataset.lat,+this.dataset.lng)">🔍</button>
+            </div>`
+        }
+
+    ).join('')
+
+    elLocsConteiner.innerHTML = locsHtmls
+    
+}
+
+function onDeleteLoc(name){
+    console.log(name)
+}
+
+function onPenToLocation(lat,lng){
+console.log(lat,lng)
+}
+

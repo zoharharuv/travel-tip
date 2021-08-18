@@ -13,7 +13,7 @@ var gMap;
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     gCurrentLoc = {lat,lng}
-    console.log('InitMap');
+  
     return _connectGoogleApi()
         .then(() => {
             console.log('google available');
@@ -80,7 +80,7 @@ function getLocation() {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     gMap.setCenter(new google.maps.LatLng(lat, lng));
-    
+
     gCurrentLoc = {
         lat,
         lng
