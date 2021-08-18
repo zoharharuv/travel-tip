@@ -3,7 +3,7 @@ export const mapService = {
     addMarker,
     panTo,
     centerMap,
-    getCurrrentLoc
+    getCurrentLoc
 }
 
 var gCurrentLoc = {}
@@ -85,6 +85,6 @@ function getLocation() {
     }
   }
 
-  function getCurrrentLoc(){
-      return gCurrentLoc
+  function getCurrentLoc(){
+      return gCurrentLoc;
   }

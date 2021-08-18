@@ -2,28 +2,31 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { geoService } from './services/geo.service.js'
 
-
-
-
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGo = onGo;
-window.onSave = onSave
-window.onMyLocation = onMyLocation
+window.onSave = onSave;
+window.onCopy = onCopy;
+window.onMyLocation = onMyLocation;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onDeleteLoc = onDeleteLoc;
 window.onPenToLocation = onPenToLocation;
 
 function onInit() {
-    debugger
-    mapService.initMap()
+    // get queryPos
+    const queryPos = {
+        lat: getQuery('lat'),
+        lng: getQuery('lng')
+    }
+    // if got lat and lng load it, else load the default
+    queryPos.lat && queryPos.lng ? mapService.initMap(queryPos.lat, queryPos.lng) : mapService.initMap()
         .then(() => {
             console.log('Map is ready');
         })
         .catch(() => console.log('Error: cannot init map'));
-        renderLocs()
+    renderLocs()
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -98,13 +101,13 @@ function onSave() {
 
 }
 
-function renderLocs(){
+function renderLocs() {
     const locs = locService.getLocs()
     var elLocsConteiner = document.querySelector('.locations-container')
     var locsHtmls = locs.map(
 
-        function(loc){
-            return  `<div class="location-container">
+        function (loc) {
+            return `<div class="location-container">
             <button data-name="${loc.name}" onclick="onDeleteLoc(this.dataset.name)">🗑️</button>
             <small>
                Name: ${loc.name} Lat: ${loc.lat} Long: ${loc.lng} 
@@ -116,15 +119,47 @@ function renderLocs(){
     ).join('')
 
     elLocsConteiner.innerHTML = locsHtmls
-    
+
 }
 
-function onDeleteLoc(name){
+function onDeleteLoc(name) {
     locService.deleteLoc(name)
     renderLocs()
 }
 
-function onPenToLocation(lat,lng){
-console.log(lat,lng)
+function onPenToLocation(lat, lng) {
+    console.log(lat, lng)
 }
 
+function onCopy() {
+    // get the current location and send it to updateClipboard
+    const { lat, lng } = mapService.getCurrentLoc();
+    const hrefURL = `https://zoharharuv.github.io/travel-tip/?lat=${lat}&lng=${lng}`
+    navigator.permissions.query({ name: "clipboard-write" })
+        .then(res => {
+            if (res.state == "granted" || res.state == "prompt") {
+                updateClipboard(hrefURL);
+            }
+        });
+}
+
+function updateClipboard(newClip) {
+    // update user clipboard with new url
+    navigator.clipboard.writeText(newClip)
+        .then(() => {
+            console.log('Success:');
+        }, err => {
+            console.log('Error:', err);
+        });
+}
+
+function getQuery(val) {
+    // check the lat and lng in href query
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] === val) { return +pair[1]; }
+    }
+    return (false);
+}
