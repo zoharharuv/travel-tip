@@ -6,7 +6,7 @@ body {
   margin: 0 auto;
 }
 
-.head-conteiner {
+.head-container {
   border:1px black solid;
   height: 15vh;
   display: flex;
@@ -14,7 +14,7 @@ body {
   align-items: center;
 }
 
-.main-conteiner1 {
+.main-container1 {
   border: 1px black solid;
   height: 15vh;
   display: flex;
@@ -22,32 +22,32 @@ body {
   align-items: center;
 }
 
-.main-conteiner2 {
+.main-container2 {
   display: flex;
   border: 1px black solid;
   height: 70vh;
 }
 
-.info-conteiner {
+.info-container {
   border: 1px black solid;
   height: 100%;
   width: 40%;
 
 }
 
-.weather-conteiner {
+.weather-container {
   border: 1px black solid;
   height: 50%;
   width: 100%;
 }
 
-.locations-conteiner {
+.locations-container {
   border: 1px black solid;
   height: 50%;
   width: 100%;
 }
 
-.map-conteiner {
+.map-container {
   border: 1px black solid;
   height: 100%;
   width: 60%;

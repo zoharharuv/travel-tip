@@ -1,7 +1,6 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { geoService } from './services/geo.service.js'
-import { storageService } from './services/storage.service'
 
 
 window.onload = onInit;
@@ -14,6 +13,7 @@ window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 
 function onInit() {
+    debugger
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
@@ -64,7 +64,7 @@ function onMyLocation() {
 
 // on go click get the location from the geo service as promise and then when resolved point the map to that point
 function onGo() {
-    var location = document.querySelector('[name="location"]').value
+    var location = document.querySelector('[name="location"]').value;
 
     geoService.getLocation(location)
         .then((data) => {
@@ -74,7 +74,7 @@ function onGo() {
 }
 
 function onSave() {
-    var name = document.querySelector('[name="loc-name"]').value
+    var name = document.querySelector('[name="loc-name"]').value.toLowerCase();
     var currLoc = mapService.getCurrrentLoc()
 
     if (!name) return
@@ -87,6 +87,4 @@ function onSave() {
     }
 
     locService.saveLoc(savedLoc)
-
-
 }
